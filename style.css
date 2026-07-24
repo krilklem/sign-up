@@ -1,0 +1,17 @@
+:root {
+
+}
+
+html {
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}
