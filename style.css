@@ -1,17 +1,87 @@
 :root {
+    --turquoise: #40E0D0;
+    --yellow: #FFDB58;
+    --pink: #E0B0FF;
+    --purple: #8C68C4;
+    --light-purple: #A589D1;
 
+    --banner-background: var(--pink);
+    --background: var(--yellow);
 }
 
 html {
     box-sizing: border-box;
-    font-family: Tahoma, sans-serif;
+    font-family: 'Gill Sans', 'Trebuchet MS', sans-serif;
 }
 
 *, *::before, *::after {
     box-sizing: inherit;
 }
 
-body {
+* {
     margin: 0;
-    height: 100vh;
+    padding: 0;
 }
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: clamp(45ch, 50%, 75ch); */
+}
+
+body > .container {
+    width: clamp(45ch, 60%, 75ch);
+    background-color: pink;
+}
+
+.container > .container {
+    display: flex;
+    flex-direction: row;
+    background-color: cornsilk;
+    flex-wrap: wrap;
+}
+
+form > .container {
+    background-color: cornflowerblue;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+form > .container > .form-entry{
+    width: 50%;
+    /* background-color: yellowgreen; */
+    margin: 1rem 0 1rem 0;
+}
+
+form > .container > .form-entry > * {
+    width: 70%;
+    display: block;
+    margin-left: 10%;
+}
+
+#info-banner {
+    flex-basis: clamp(0px, 50%, 20ch);
+    text-align: center;
+    background-color: var(--banner-background);
+    min-width: 0px;
+    flex-shrink: 5;
+    flex-grow: 1;
+}
+
+form {
+    flex-basis: 70%;
+    flex-grow: 2;
+}
+
+label:has(+ input:required)::after, .mark-required::after {
+    content: "*";
+    color: red;
+    margin: 0 0.2rem;
+}
+
+
+
