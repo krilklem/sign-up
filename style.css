@@ -5,8 +5,37 @@
     --purple: #8C68C4;
     --light-purple: #A589D1;
 
-    --banner-background: var(--pink);
-    --background: var(--yellow);
+    /* --a: #826ed3;
+    --b: #fff8ec;
+    --c: #151221;
+    --d: #ffc0eb;
+    --e: #2d82b7;
+
+    --hero-text: var(--a);
+    --banner-background: var(--a);
+    --banner-text: var(--b);
+    --banner-header: var(--d);
+    --form-background: var(--b);
+    --form-text: var(--c);
+    --submit-text: var(--b);
+    --submit-background: var(--a);
+    --star: var(--a); */
+
+    --rounding-radius: 8px;
+
+    --light: #ebebeb;
+    --dark: #191919;
+    --mid: #7a7a7a;
+
+    --hero-text: var(--dark);
+    --banner-background: var(--dark);
+    --banner-text: var(--mid);
+    --banner-header: var(--light);
+    --form-background: var(--light);
+    --form-text: var(--dark);
+    --submit-text: var(--light);
+    --submit-background: var(--dark);
+    --star: var(--dark);
 }
 
 html {
@@ -28,23 +57,26 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* width: clamp(45ch, 50%, 75ch); */
-}
+    background-image: repeating-conic-gradient(var(--light) 0% 25%, white 0% 50%);
+    background-size: 4rem 4rem;
+} 
 
 body > .container {
-    width: clamp(45ch, 60%, 75ch);
-    background-color: pink;
+    margin-top: clamp(2rem, 20%, 8rem);
+    width: clamp(45ch, 60%, 85ch);
+}
+
+header > p {
+    color: var(--hero-text);
 }
 
 .container > .container {
     display: flex;
     flex-direction: row;
-    background-color: cornsilk;
     flex-wrap: wrap;
 }
 
 form > .container {
-    background-color: cornflowerblue;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -53,12 +85,11 @@ form > .container {
 
 form > .container > .form-entry{
     width: 50%;
-    /* background-color: yellowgreen; */
     margin: 1rem 0 1rem 0;
 }
 
 form > .container > .form-entry > * {
-    width: 70%;
+    width: 80%;
     display: block;
     margin-left: 10%;
 }
@@ -66,22 +97,87 @@ form > .container > .form-entry > * {
 #info-banner {
     flex-basis: clamp(0px, 50%, 20ch);
     text-align: center;
+    color: var(--banner-text);
     background-color: var(--banner-background);
     min-width: 0px;
     flex-shrink: 5;
     flex-grow: 1;
+    padding: 4rem 1.3rem;
+    border-radius: var(--rounding-radius) 0 0 var(--rounding-radius);
+}
+
+#info-banner > h2 {
+    color: var(--banner-header);
 }
 
 form {
     flex-basis: 70%;
     flex-grow: 2;
+    padding: 1.5rem 1rem;
+    color: var(--form-text);
+    background-color: var(--form-background);
+    border-radius: 0 var(--rounding-radius) var(--rounding-radius) 0;
 }
 
 label:has(+ input:required)::after, .mark-required::after {
     content: "*";
-    color: red;
+    color: var(--star);
     margin: 0 0.2rem;
 }
 
+form button {
+    color: var(--submit-text);
+    background-color: var(--submit-background);
+}
 
+a {
+    color: var(--submit-background);
+}
 
+option {
+    text-align: center;
+}
+
+.form-entry input, select {
+    padding: 0.2rem;
+    border: 2px solid var(--mid);
+    border-radius: 6px;
+}
+
+button {
+    padding: 0.4rem 1rem;
+    border: 2px solid var(--dark);
+    border-radius: 8px;
+    margin: 2rem 0 0.5rem;
+}
+
+.form-entry:has(button) {
+    text-align: center;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: white;
+    vertical-align: -0.4rem;
+}
+
+input[type="checkbox"]::before {
+    content: "X";
+    position: absolute;
+    font-size: 1rem;
+    left: 0.3rem;
+    top: 0.1rem;
+    color: var(--light);
+    visibility: hidden;
+}
+
+input[type="checkbox"]:checked {
+    background: var(--mid);
+}
+
+input[type="checkbox"]:checked::before {
+    visibility: visible;
+}
